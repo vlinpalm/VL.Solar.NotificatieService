@@ -1,6 +1,9 @@
-﻿namespace VL.Solar.NotificatieService.Services.GraphQL;
+﻿
+using GraphQL;
+namespace VL.Solar.NotificatieService.Services.GraphQL;
 
-public class IGraphQLService
+public interface IGraphQLService
 {
-    
+    Task<GraphQLResponse<T>> ExecuteGraphQLQuery<T>(string query);
+    Task ExecuteExampleQuery();
 }
