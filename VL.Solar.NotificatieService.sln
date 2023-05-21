@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Solar.NotificatieService", "VL.Solar.NotificatieService\VL.Solar.NotificatieService.csproj", "{8410437D-8DDF-45D3-A853-F0116DF1419C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Solar.SolarWorker", "VL.Solar.SolarWorker\VL.Solar.SolarWorker.csproj", "{E3CD35A2-7D54-495B-976D-2C55CB4C7BD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8410437D-8DDF-45D3-A853-F0116DF1419C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8410437D-8DDF-45D3-A853-F0116DF1419C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8410437D-8DDF-45D3-A853-F0116DF1419C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8410437D-8DDF-45D3-A853-F0116DF1419C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3CD35A2-7D54-495B-976D-2C55CB4C7BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CD35A2-7D54-495B-976D-2C55CB4C7BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3CD35A2-7D54-495B-976D-2C55CB4C7BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CD35A2-7D54-495B-976D-2C55CB4C7BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
