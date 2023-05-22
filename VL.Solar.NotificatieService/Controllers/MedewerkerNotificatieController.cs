@@ -12,31 +12,31 @@ namespace VL.Solar.NotificatieService.Controllers
     [ServiceFilter(typeof(AuditLogActionFilter))]
     public class MedewerkerNotificatieController : ControllerBase
     {
-        private readonly IMedewerkerNotificatieService medewerkerNotificatieService;
+        private readonly IMedewerkerNotificatieService _medewerkerNotificatieService;
 
         public MedewerkerNotificatieController(IMedewerkerNotificatieService medewerkerNotificatieService)
         {
-            this.medewerkerNotificatieService = medewerkerNotificatieService;
+            _medewerkerNotificatieService = medewerkerNotificatieService;
         }
 
         [HttpPost]
-        public IActionResult CreateMedewerkerNotificatie(CreateMedewerkerNotificatie createMedewerkerNotificatie)
+        public async Task<IActionResult> CreateMedewerkerNotificatie(CreateMedewerkerNotificatie createMedewerkerNotificatie)
         {
-            medewerkerNotificatieService.CreateMedewerkerNotificatie(createMedewerkerNotificatie);
+            await _medewerkerNotificatieService.CreateMedewerkerNotificatieAsync(createMedewerkerNotificatie);
             return Ok();
         }
 
         [HttpGet]
-        public IActionResult GetMedewerkerNotificaties()
+        public async Task<IActionResult> GetMedewerkerNotificaties()
         {
-            var medewerkerNotificaties = medewerkerNotificatieService.GetMedewerkerNotificaties();
+            var medewerkerNotificaties = await _medewerkerNotificatieService.GetMedewerkerNotificatiesAsync();
             return Ok(medewerkerNotificaties);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetMedewerkerNotificatieById(int id)
+        public async Task<IActionResult> GetMedewerkerNotificatieById(int id)
         {
-            var medewerkerNotificatie = medewerkerNotificatieService.GetMedewerkerNotificatieById(id);
+            var medewerkerNotificatie = await _medewerkerNotificatieService.GetMedewerkerNotificatieByIdAsync(id);
             if (medewerkerNotificatie == null)
                 return NotFound();
 
@@ -44,36 +44,36 @@ namespace VL.Solar.NotificatieService.Controllers
         }
         
         [HttpGet("{notificatieId}")]
-        public IActionResult GetMedewerkerNotificatiesByNotificatieId(int notificatieId)
+        public async Task<IActionResult> GetMedewerkerNotificatiesByNotificatieId(int notificatieId)
         {
-            var medewerkerNotificaties = medewerkerNotificatieService.GetMedewerkerNotificatiesByNotificatieId(notificatieId);
+            var medewerkerNotificaties = await _medewerkerNotificatieService.GetMedewerkerNotificatiesByNotificatieIdAsync(notificatieId);
             return Ok(medewerkerNotificaties);
         }
 
         [HttpGet("{medewerkerId}")]
-        public IActionResult GetMedewerkerNotificatieByMedewerkerId(string medewerkerId)
+        public async Task<IActionResult> GetMedewerkerNotificatieByMedewerkerId(string medewerkerId)
         {
-            var medewerkerNotificaties = medewerkerNotificatieService.GetMedewerkerNotificatiesByMedewerker(medewerkerId);
+            var medewerkerNotificaties = await _medewerkerNotificatieService.GetMedewerkerNotificatiesByMedewerkerAsync(medewerkerId);
             return Ok(medewerkerNotificaties);
         }
         
         [HttpGet("unread")]
-        public IActionResult GetUnreadNotificaties()
+        public async Task<IActionResult> GetUnreadNotificaties()
         {
-            var unreadNotificaties = medewerkerNotificatieService.GetUnreadNotificaties();
+            var unreadNotificaties = await _medewerkerNotificatieService.GetMedewerkerNotificatiesAsync();
             return Ok(unreadNotificaties);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateMedewerkerNotificatie(int id, MedewerkerNotificatie updatedNotification)
+        public async Task<IActionResult> UpdateMedewerkerNotificatie(int id, MedewerkerNotificatie updatedNotification)
         {
-            var existingNotification = medewerkerNotificatieService.GetMedewerkerNotificatieById(id);
+            var existingNotification = await _medewerkerNotificatieService.GetMedewerkerNotificatieByIdAsync(id);
             if (existingNotification == null)
                 return NotFound();
             
             existingNotification.Gelezen = updatedNotification.Gelezen;
 
-            medewerkerNotificatieService.UpdateMedewerkerNotificatie(id, existingNotification);
+            await _medewerkerNotificatieService.UpdateMedewerkerNotificatieAsync(id, existingNotification);
             return Ok();
         }
 

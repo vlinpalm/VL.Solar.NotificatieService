@@ -92,3 +92,11 @@ E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debu
 E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\RabbitMQ.Client.dll
 E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\System.Threading.Channels.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\GraphQL.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\GraphQLParser.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\GraphQL.Client.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\GraphQL.Client.Abstractions.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\GraphQL.Client.Abstractions.Websocket.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\GraphQL.Client.Serializer.Newtonsoft.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\GraphQL.Primitives.dll
+E:\cSharpDotNet\VL.Solar.NotificatieService\VL.Solar.NotificatieService\bin\Debug\net6.0\System.Reactive.dll

@@ -1,15 +1,17 @@
 ﻿using VL.Solar.NotificatieService.Models;
 using VL.Solar.NotificatieService.Models.Data;
 
-namespace VL.Solar.NotificatieService.Services.Interfaces;
 
-public interface IMedewerkerNotificatieService
+namespace VL.Solar.NotificatieService.Services.Interfaces
 {
-    List<MedewerkerNotificatie?> GetMedewerkerNotificaties();
-    MedewerkerNotificatie? GetMedewerkerNotificatieById(int medewerkerNotificatieId);
-    IEnumerable<MedewerkerNotificatie?> GetMedewerkerNotificatiesByMedewerker(string medewerkerId);
-    IEnumerable<MedewerkerNotificatie?> GetMedewerkerNotificatiesByNotificatieId(int notificatieId);
-    void CreateMedewerkerNotificatie(CreateMedewerkerNotificatie createMedewerkerNotificatie);
-    IEnumerable<MedewerkerNotificatie?> GetUnreadNotificaties();
-    void UpdateMedewerkerNotificatie(int medewerkerNotificatieId, MedewerkerNotificatie updatedMedewerkerNotificatie);
+    public interface IMedewerkerNotificatieService
+    {
+        Task<List<MedewerkerNotificatie>> GetMedewerkerNotificatiesAsync();
+        Task<MedewerkerNotificatie?> GetMedewerkerNotificatieByIdAsync(int medewerkerNotificatieId);
+        Task<IEnumerable<MedewerkerNotificatie?>> GetMedewerkerNotificatiesByMedewerkerAsync(string medewerkerId);
+        Task<IEnumerable<MedewerkerNotificatie?>> GetMedewerkerNotificatiesByNotificatieIdAsync(int notificatieId);
+        Task CreateMedewerkerNotificatieAsync(CreateMedewerkerNotificatie createMedewerkerNotificatie);
+        Task<IEnumerable<MedewerkerNotificatie?>> GetUnreadNotificatiesAsync();
+        Task UpdateMedewerkerNotificatieAsync(int medewerkerNotificatieId, MedewerkerNotificatie updatedMedewerkerNotificatie);
+    }
 }

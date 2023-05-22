@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using VL.Solar.NotificatieService.Models;
 using VL.Solar.NotificatieService.Models.Data;
 using VL.Solar.NotificatieService.Data;
+using VL.Solar.NotificatieService.Repositories.Interfaces;
 
 namespace VL.Solar.NotificatieService.Repositories
 {
-    public class MedewerkerNotificatieRepository
+    public class MedewerkerNotificatieRepository : IMedewerkerNotificatieRepository
     {
         private readonly AppDbContext dbContext;
         private readonly IMapper mapper;
@@ -16,47 +18,49 @@ namespace VL.Solar.NotificatieService.Repositories
             this.mapper = mapper;
         }
 
-        public List<MedewerkerNotificatie> GetMedewerkerNotificaties()
+        public async Task<List<MedewerkerNotificatie>> GetMedewerkerNotificatiesAsync()
         {
-            return dbContext.MedewerkerNotificaties.ToList();
+            return await dbContext.MedewerkerNotificaties.ToListAsync();
         }
 
-        public MedewerkerNotificatie? GetMedewerkerNotificatieById(int medewerkerNotificatieId)
+        public async Task<MedewerkerNotificatie?> GetMedewerkerNotificatieByIdAsync(int medewerkerNotificatieId)
         {
-            return dbContext.MedewerkerNotificaties.FirstOrDefault(mNotificatie =>
+            return await dbContext.MedewerkerNotificaties.FirstOrDefaultAsync(mNotificatie =>
                 mNotificatie.MedewerkerNotificationId == medewerkerNotificatieId);
         }
 
-        public IEnumerable<MedewerkerNotificatie?> GetMedewerkerNotificatiesByMedewerker(string medewerkerId)
+        public async Task<IEnumerable<MedewerkerNotificatie?>> GetMedewerkerNotificatiesByMedewerkerAsync(string medewerkerId)
         {
-            return dbContext.MedewerkerNotificaties.Where(mNotificatie => mNotificatie.MedewerkerId == medewerkerId);
+            return await dbContext.MedewerkerNotificaties.Where(mNotificatie => mNotificatie.MedewerkerId == medewerkerId).ToListAsync();
         }
-        public IEnumerable<MedewerkerNotificatie?> GetMedewerkerNotificatiesByNotificatieId(int notificatieId)
+
+        public async Task<IEnumerable<MedewerkerNotificatie?>> GetMedewerkerNotificatiesByNotificatieIdAsync(int notificatieId)
         {
-            return dbContext.MedewerkerNotificaties.Where(mNotificatie => mNotificatie.NotificatieId == notificatieId);
+            return await dbContext.MedewerkerNotificaties.Where(mNotificatie => mNotificatie.NotificatieId == notificatieId).ToListAsync();
         }
-        public void CreateMedewerkerNotificatie(CreateMedewerkerNotificatie createMedewerkerNotificatie)
+
+        public async Task CreateMedewerkerNotificatieAsync(CreateMedewerkerNotificatie createMedewerkerNotificatie)
         {
             var medewerkerNotificatie = mapper.Map<MedewerkerNotificatie>(createMedewerkerNotificatie);
             dbContext.MedewerkerNotificaties.Add(medewerkerNotificatie);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
         }
-        public void UpdateMedewerkerNotificatie(int medewerkerNotificatieId, MedewerkerNotificatie updatedMedewerkerNotificatie)
+
+        public async Task UpdateMedewerkerNotificatieAsync(int medewerkerNotificatieId, MedewerkerNotificatie updatedMedewerkerNotificatie)
         {
-            var chosenMedewerkerNotificatie = dbContext.MedewerkerNotificaties.FirstOrDefault(mNotificatie =>
+            var chosenMedewerkerNotificatie = await dbContext.MedewerkerNotificaties.FirstOrDefaultAsync(mNotificatie =>
                 mNotificatie.MedewerkerNotificationId == medewerkerNotificatieId);
 
             if (chosenMedewerkerNotificatie != null)
             {
-                chosenMedewerkerNotificatie.Gelezen = updatedMedewerkerNotificatie.Gelezen ;
-                dbContext.SaveChanges();
+                chosenMedewerkerNotificatie.Gelezen = updatedMedewerkerNotificatie.Gelezen;
+                await dbContext.SaveChangesAsync();
             }
         }
-        
-        public IEnumerable<MedewerkerNotificatie?> GetUnreadNotificaties()
+
+        public async Task<IEnumerable<MedewerkerNotificatie?>> GetUnreadNotificatiesAsync()
         {
-            return dbContext.MedewerkerNotificaties.Where(mNotificatie => mNotificatie.Gelezen == false);
+            return await dbContext.MedewerkerNotificaties.Where(mNotificatie => mNotificatie.Gelezen == false).ToListAsync();
         }
     }
-
 }

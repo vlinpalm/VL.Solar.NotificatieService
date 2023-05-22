@@ -14,7 +14,7 @@ namespace VL.Solar.NotificatieService.Tests
     public class MedewerkerNotificatieRepositoryTests
     {
         [Fact]
-        public void GetMedewerkerNotificaties_ShouldReturnAllMedewerkerNotificatiesFromDbContext()
+        public async void GetMedewerkerNotificaties_ShouldReturnAllMedewerkerNotificatiesFromDbContext()
         {
             // Arrange
             var dbContextMock = new Mock<AppDbContext>();
@@ -26,14 +26,14 @@ namespace VL.Solar.NotificatieService.Tests
             dbContextMock.Setup(db => db.MedewerkerNotificaties).Returns(dbSetMock);
 
             // Act
-            var result = repository.GetMedewerkerNotificaties();
+            var result = await repository.GetMedewerkerNotificatiesAsync();
 
             // Assert
             Assert.Equal(expectedNotificaties, result);
         }
 
         [Fact]
-        public void GetMedewerkerNotificatieById_ShouldReturnCorrectMedewerkerNotificatieFromDbContext()
+        public async void GetMedewerkerNotificatieById_ShouldReturnCorrectMedewerkerNotificatieFromDbContext()
         {
             // Arrange
             var dbContextMock = new Mock<AppDbContext>();
@@ -46,14 +46,14 @@ namespace VL.Solar.NotificatieService.Tests
 
 
             // Act
-            var result = repository.GetMedewerkerNotificatieById(1);
+            var result = await repository.GetMedewerkerNotificatieByIdAsync(1);
 
             // Assert
             Assert.Equal(expectedNotificatie, result);
         }
 
         [Fact]
-        public void GetMedewerkerNotificatiesByMedewerker_ShouldReturnNotificatiesWithMatchingMedewerkerIdFromDbContext()
+        public async void GetMedewerkerNotificatiesByMedewerker_ShouldReturnNotificatiesWithMatchingMedewerkerIdFromDbContext()
         {
             // Arrange
             var dbContextMock = new Mock<AppDbContext>();
@@ -66,14 +66,14 @@ namespace VL.Solar.NotificatieService.Tests
 
 
             // Act
-            var result = repository.GetMedewerkerNotificatiesByMedewerker("User123");
+            var result = await repository.GetMedewerkerNotificatiesByMedewerkerAsync("User123");
 
             // Assert
             Assert.Equal(expectedNotificaties, result);
         }
 
         [Fact]
-        public void GetMedewerkerNotificatiesByNotificatieId_ShouldReturnNotificatiesWithMatchingNotificatieIdFromDbContext()
+        public async void GetMedewerkerNotificatiesByNotificatieId_ShouldReturnNotificatiesWithMatchingNotificatieIdFromDbContext()
         {
             // Arrange
             var dbContextMock = new Mock<AppDbContext>();
@@ -86,14 +86,14 @@ namespace VL.Solar.NotificatieService.Tests
 
 
             // Act
-            var result = repository.GetMedewerkerNotificatiesByNotificatieId(1);
+            var result = await repository.GetMedewerkerNotificatiesByNotificatieIdAsync(1);
 
             // Assert
             Assert.Equal(expectedNotificaties, result);
         }
 
         [Fact]
-        public void CreateMedewerkerNotificatie_ShouldAddNotificatieToDbContext()
+        public async void CreateMedewerkerNotificatie_ShouldAddNotificatieToDbContext()
         {
             // Arrange
             var dbContextMock = new Mock<AppDbContext>();
@@ -106,7 +106,7 @@ namespace VL.Solar.NotificatieService.Tests
                 .Returns(medewerkerNotificatie);
 
             // Act
-            repository.CreateMedewerkerNotificatie(createMedewerkerNotificatie);
+            await repository.CreateMedewerkerNotificatieAsync(createMedewerkerNotificatie);
 
             // Assert
             dbContextMock.Verify(db => db.MedewerkerNotificaties.Add(medewerkerNotificatie), Times.Once);
@@ -114,7 +114,7 @@ namespace VL.Solar.NotificatieService.Tests
         }
 
         [Fact]
-        public void UpdateMedewerkerNotificatie_ShouldUpdateMedewerkerNotificatieInDbContext()
+        public async void UpdateMedewerkerNotificatie_ShouldUpdateMedewerkerNotificatieInDbContext()
         {
             // Arrange
             var dbContextMock = new Mock<AppDbContext>();
@@ -128,7 +128,7 @@ namespace VL.Solar.NotificatieService.Tests
 
 
             // Act
-            repository.UpdateMedewerkerNotificatie(medewerkerNotificatieId, medewerkerNotificatie);
+            await repository.UpdateMedewerkerNotificatieAsync(medewerkerNotificatieId, medewerkerNotificatie);
 
             // Assert
             dbContextMock.Verify(db => db.SaveChanges(), Times.Once);
@@ -136,7 +136,7 @@ namespace VL.Solar.NotificatieService.Tests
         }
 
         [Fact]
-        public void GetUnreadNotificaties_ShouldReturnUnreadNotificatiesFromDbContext()
+        public async void GetUnreadNotificaties_ShouldReturnUnreadNotificatiesFromDbContext()
         {
             // Arrange
             var dbContextMock = new Mock<AppDbContext>();
@@ -149,7 +149,7 @@ namespace VL.Solar.NotificatieService.Tests
 
 
             // Act
-            var result = repository.GetUnreadNotificaties();
+            var result = await repository.GetUnreadNotificatiesAsync();
 
             // Assert
             Assert.Equal(expectedNotificaties, result);

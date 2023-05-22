@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using VL.Solar.NotificatieService.Data;
 using VL.Solar.NotificatieService.Helpers;
 using VL.Solar.NotificatieService.Repositories;
+using VL.Solar.NotificatieService.Repositories.Interfaces;
 using VL.Solar.NotificatieService.Services;
 using VL.Solar.NotificatieService.Services.Interfaces;
 

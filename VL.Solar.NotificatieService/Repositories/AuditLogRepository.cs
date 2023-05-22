@@ -1,5 +1,6 @@
 ﻿using VL.Solar.NotificatieService.Data;
 using VL.Solar.NotificatieService.Models;
+using VL.Solar.NotificatieService.Repositories.Interfaces;
 
 namespace VL.Solar.NotificatieService.Repositories
 {
