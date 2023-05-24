@@ -51,9 +51,15 @@ public class NotificatieService : INotificatieService
     {
         repository.DeleteNotificatie(notificatieId);
     }
-    private List<string> ValidateNotificatie(Notificatie notificatie)
+    private List<string> ValidateNotificatie(Notificatie? notificatie)
     {
         var validationErrors = new List<string>();
+
+        if (notificatie == null)
+        {
+            validationErrors.Add("Notificatie is vereist.");
+            return validationErrors;
+        }
 
         if (string.IsNullOrEmpty(notificatie.Inhoud))
         {
@@ -66,8 +72,9 @@ public class NotificatieService : INotificatieService
 
         if (notificatie.DossierNummer <= 0)
         {
-            validationErrors.Add("Ongeldig DossierNummer. Het moet een positief getal zijn.");
+            validationErrors.Add("Ongeldig DossierNummer.");
         }
+
         return validationErrors;
     }
 }
