@@ -1,0 +1,24 @@
+﻿import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+public dataSubject: BehaviorSubject<any> = new BehaviorSubject(null);
+
+constructor(private http: HttpClient) { }
+
+this.hubConnection.on('ReceiveAlert', (data) => {
+  console.log("Alert: ", data);
+  
+  this.http.post('http://localhost:5000/api/postEndpoint', { data }).pipe(
+    switchMap(postResponse => {
+      console.log(postResponse);
+      return this.http.get('http://localhost:5000/api/getEndpoint');
+    })
+  ).subscribe(getResponse => {
+    console.log(getResponse);
+    
+    this.dataSubject.next(getResponse);
+  }, error => {
+    console.error(error);
+  });
+});
