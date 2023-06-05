@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Solar.SolarWorker", "VL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Solar.StressTest", "VL.Solar.StressTest\VL.Solar.StressTest.csproj", "{EA769B6C-875D-4E30-9B68-B6EBD7D7D577}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VL.Solar.NotificatieService.Tests", "VL.Solar.NotificatieService.Tests\VL.Solar.NotificatieService.Tests.csproj", "{284E009B-35C6-4772-83FE-667E8594B497}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{EA769B6C-875D-4E30-9B68-B6EBD7D7D577}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA769B6C-875D-4E30-9B68-B6EBD7D7D577}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA769B6C-875D-4E30-9B68-B6EBD7D7D577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284E009B-35C6-4772-83FE-667E8594B497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284E009B-35C6-4772-83FE-667E8594B497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284E009B-35C6-4772-83FE-667E8594B497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284E009B-35C6-4772-83FE-667E8594B497}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

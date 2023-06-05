@@ -5,6 +5,9 @@ namespace VL.Solar.NotificatieService.Data
 {
     public class AppDbContext : DbContext
     {
+        public AppDbContext() {
+        }
+
         public DbSet<MedewerkerNotificatie> MedewerkerNotificaties { get; set; }
         public DbSet<Notificatie?> Notificaties { get; set; }
         public DbSet<Team> Teams { get; set; }
