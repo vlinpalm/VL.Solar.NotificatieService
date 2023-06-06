@@ -1,0 +1,40 @@
+
+var mockConfiguration = new ConfigurationBuilder().Build();
+
+mockConfiguration["SomeConfigKey"] = "SomeConfigValue";
+
+var options = new DbContextOptions<NotificatieContext>();
+var mockOptions = new Mock<DbContextOptions<NotificatieContext>>();
+mockOptions.Setup(o => o.FindExtension<SomeExtension>()).Returns(new SomeExtension());
+
+var mockContext = new Mock<NotificatieContext>(MockBehavior.Default, mockConfiguration, options);
+
+var mockContext = new Mock<NotificatieContext>(MockBehavior.Default, mockConfiguration.Object, mockOptions.Object);
+
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Primitives;
+using Microsoft.Extensions.Configuration.Abstractions.Fakes;
+
+public class MockConfiguration : FakesBase, IConfiguration
+{
+    // Override the properties and methods of IConfiguration as needed for testing
+
+    public string this[string key]
+    {
+        get => Get<string>(key);
+        set => Add(key, value);
+    }
+
+    public string Get(string key) => Get<string>(key);
+
+    public IConfigurationSection GetSection(string key) => new ConfigurationSection();
+
+    public IEnumerable<IConfigurationSection> GetChildren() => new List<IConfigurationSection>();
+
+    public IChangeToken GetReloadToken() => new ConfigurationReloadToken();
+}
+
+
+var mockConfiguration = new MockConfiguration();
+var mockContext = new Mock<NotificatieContext>(MockBehavior.Default, mockConfiguration, options);
